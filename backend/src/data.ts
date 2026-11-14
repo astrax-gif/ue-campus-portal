@@ -1,18 +1,17 @@
+import { Room, Slot, Start } from './types'
 export const p = (s: string) => { const [a, b] = s.split(':').map(Number); return a * 60 + b }
-export type Room = { id: string; name: string; x: number; y: number; w: number; h: number; cap: number; door: [number, number]; av: string[]; noise: string; icon: string }
-export type Slot = { id: number; day: number; s: number; e: number; room: string; course: string; prof: string }
 
 // Modular coordinates (SVG units, 800x420): replace x/y/w/h/door with your real floor plan.
 export const ROOMS: Room[] = [
-  { id: 'theater', name: 'Room 1 · Theater Room', x: 20, y: 20, w: 260, h: 160, cap: 180, door: [150, 180], av: ['Dual Projector', 'Lecture Capture', 'Surround PA'], noise: 'Loud zone', icon: '🎭' },
-  { id: 'room2', name: 'Room 2 · Grand Mergeable', x: 300, y: 20, w: 240, h: 160, cap: 50, door: [420, 180], av: ['Smartboard', 'Dual Projector', 'Lecture Capture'], noise: 'Medium', icon: '🧩' },
-  { id: 'r202', name: 'Room 202', x: 560, y: 20, w: 200, h: 160, cap: 30, door: [660, 180], av: ['Smartboard'], noise: 'Quiet', icon: '📘' },
-  { id: 'r203', name: 'Lab 203', x: 20, y: 240, w: 180, h: 140, cap: 24, door: [110, 240], av: ['24 Workstations', 'Projector'], noise: 'Medium', icon: '💻' },
-  { id: 'sem1', name: 'Seminar Room S1', x: 220, y: 240, w: 160, h: 140, cap: 16, door: [300, 240], av: ['Smartboard'], noise: 'Quiet', icon: '🗣️' },
-  { id: 'study', name: 'Study Room St1', x: 400, y: 240, w: 160, h: 140, cap: 12, door: [480, 240], av: ['Power outlets', 'Whiteboard'], noise: 'Silent zone', icon: '📚' },
-  { id: 'r204', name: 'Room 204', x: 580, y: 240, w: 180, h: 140, cap: 28, door: [670, 240], av: ['Projector'], noise: 'Quiet', icon: '📗' },
+  { id: 'theater', name: 'Room 1 · Theater Room', x: 20, y: 20, w: 260, h: 160, cap: 180, door: [150, 180], av: ['Dual Projector', 'Lecture Capture', 'Surround PA'], noise: 'Loud zone', icon: '🎭', photo: '/rooms/theater.jpg' },
+  { id: 'room2', name: 'Room 2 · Grand Mergeable', x: 300, y: 20, w: 240, h: 160, cap: 50, door: [420, 180], av: ['Smartboard', 'Dual Projector', 'Lecture Capture'], noise: 'Medium', icon: '🧩', photo: '/rooms/room2.jpg' },
+  { id: 'r202', name: 'Room 202', x: 560, y: 20, w: 200, h: 160, cap: 30, door: [660, 180], av: ['Smartboard'], noise: 'Quiet', icon: '📘', photo: '/rooms/r202.jpg' },
+  { id: 'r203', name: 'Lab 203', x: 20, y: 240, w: 180, h: 140, cap: 24, door: [110, 240], av: ['24 Workstations', 'Projector'], noise: 'Medium', icon: '💻', photo: '/rooms/r203.jpg' },
+  { id: 'sem1', name: 'Seminar Room S1', x: 220, y: 240, w: 160, h: 140, cap: 16, door: [300, 240], av: ['Smartboard'], noise: 'Quiet', icon: '🗣️', photo: '/rooms/sem1.jpg' },
+  { id: 'study', name: 'Study Room St1', x: 400, y: 240, w: 160, h: 140, cap: 12, door: [480, 240], av: ['Power outlets', 'Whiteboard'], noise: 'Silent zone', icon: '📚', photo: '/rooms/study.jpg' },
+  { id: 'r204', name: 'Room 204', x: 580, y: 240, w: 180, h: 140, cap: 28, door: [670, 240], av: ['Projector'], noise: 'Quiet', icon: '📗', photo: '/rooms/r204.jpg' },
 ]
-export const STARTS: Record<string, { n: string; p: [number, number] }> = {
+export const STARTS: Record<string, Start> = {
   entrance: { n: 'Main Entrance', p: [30, 210] },
   reception: { n: 'Campus Reception', p: [390, 210] },
   stairs: { n: 'Stairwell / Elevator A', p: [775, 210] },
